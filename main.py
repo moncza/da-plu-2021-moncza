@@ -1,3 +1,5 @@
+import uvicorn
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 
@@ -23,3 +25,6 @@ def counter():
 @app.get("/hello/{name}", response_model=HelloResp)
 def hello_name_view(name: str):
     return HelloResp(msg=f"Hello {name}")
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
